@@ -1,0 +1,5 @@
+Ejecutar el archivo main con las siguientes dependencias:
+
+`pkg-config --cflags --libs gtk+-2.0` -L /usr/local/lib/ -lglfw -lglut -lGL -lGLEW
+
+Para navegar por el mapa se debe presionar las teclas "w" y "s" para adelantar o retroceder
