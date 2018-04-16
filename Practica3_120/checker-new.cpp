@@ -12,13 +12,13 @@ using namespace std;
 typedef Angel::vec3 point3;
 typedef Angel::vec4 color4;
 
-/*	Create checkerboard texture	*/
-/*#define ImageWidth  96
-#define ImageHeight 80*/
-#define ImageWidth  64
-#define ImageHeight 64
+/*  Create checkerboard texture */
+#define ImageWidth  96
+#define ImageHeight 80
+//#define ImageWidth  64
+//#define ImageHeight 64
 static  GLubyte Image[ImageHeight][ImageWidth][4];
-#define	stripeImageWidth 32
+#define stripeImageWidth 32
 GLubyte stripeImage[4*stripeImageWidth];
 
 static GLuint texName;
@@ -38,7 +38,6 @@ point3 quad_vert[6] = {
     vec2(0.0, 0.0),  // for a
     vec2(0.0, 1.25),  // for b
     vec2(1.5, 1.25),  // for c
-
     vec2(1.5, 1.25),  // for c
     vec2(1.5, 0.0),  // for d
     vec2(0.0, 0.0),  // for a 
@@ -112,7 +111,7 @@ void image_set_up(void)
 void init(void)
 {
     glEnable(GL_DEPTH_TEST);    
-    glClearColor(0.529, 0.807, 0.92, 1.0);	/* sky blue */
+    glClearColor(0.529, 0.807, 0.92, 1.0);  /* sky blue */
     
  
     glFogi(GL_FOG_MODE, fogMode[fogfilter]);        // Fog Mode
@@ -172,12 +171,12 @@ void drawObj(GLuint buffer, int num_vertices)
     GLuint vPosition = glGetAttribLocation( program, "vPosition" );
     glEnableVertexAttribArray( vPosition );
     glVertexAttribPointer( vPosition, 3, GL_FLOAT, GL_FALSE, 0,
-			   BUFFER_OFFSET(0) );
+               BUFFER_OFFSET(0) );
 
     GLuint vTexCoord = glGetAttribLocation( program, "vTexCoord" ); 
     glEnableVertexAttribArray( vTexCoord );
     glVertexAttribPointer( vTexCoord, 2, GL_FLOAT, GL_FALSE, 0,
-			   BUFFER_OFFSET(sizeof(quad_vert)) ); 
+               BUFFER_OFFSET(sizeof(quad_vert)) ); 
     // the offset is the (total) size of the previous vertex attribute array(s)
 
     /* Draw a sequence of geometric objs (triangles) from the vertex buffer
@@ -253,16 +252,16 @@ void keyboard( unsigned char key, int x, int y )
 {
     switch( key ) 
     {
-	case 033: // Escape Key
-	case 'q': case 'Q':
-	    exit( EXIT_SUCCESS );
-	    break;
+    case 033: // Escape Key
+    case 'q': case 'Q':
+        exit( EXIT_SUCCESS );
+        break;
    
         case ' ':  // Toggle among No Texture (obj color), Texture Only, 
-	           //        and Modulate the two.
-	    texture_app_flag++;
+               //        and Modulate the two.
+        texture_app_flag++;
             if (texture_app_flag > 2)
-	        texture_app_flag = 0;
+            texture_app_flag = 0;
             glutPostRedisplay();
             break;
     }
